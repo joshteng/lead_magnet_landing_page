@@ -16,7 +16,7 @@ describe Lead do
 
   describe "basic validations" do
     before :each do
-      @lead = Lead.new(first_name: 'John', last_name: 'Doe', email: 'john.doe@example.com')
+      @lead = build(:lead)
     end
 
     it "is valid with a first name, last name and email address" do
@@ -40,7 +40,7 @@ describe Lead do
     end
 
     it "is invalid when a lead with similar email already exists" do
-      Lead.create(email: "john.doe@example.com")
+      Lead.create(email: @lead.email)
       expect(@lead).to_not be_valid
     end
   end
