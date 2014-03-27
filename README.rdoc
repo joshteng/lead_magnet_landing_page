@@ -1,28 +1,53 @@
-== README
+# Lead Magnet Landing Page
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app allows you to create landing pages to capture lead (collect name and email) in exchange of some bribery (ebook, video, etc+)
+Emails will be added to your chosen mailchimp list.
 
-Things you may want to cover:
+## To start the application in development
+1. `bundle install`
+2. `rake db:migrate && annotate && rake db:test:clone`
+3. Define environments in `application.yml` in `config` *(this app uses figaro to manage environment variables)*
+4. `rails s`
 
-* Ruby version
+Environment Variables to define
+* ADMIN_EMAIL
+* SECRET_TOKEN
 
-* System dependencies
+#### Sample application.yml file
+```
+ADMIN_EMAIL: "josh@example.com"
+SECRET_TOKEN: "ae6f4909a3d4725ab716fe1b56jab895f43bd47558f6d0baa6db52eedc266b01555057c740kb76cd03cec46a4y70ffdcaa355dd9c1fbe993e2c2114f678ecc20"
+```
 
-* Configuration
+## Test!
+Just run `rspec spec`
 
-* Database creation
+#### Automate testing during development
+I've included growl and guard for auto testing. To use growl, please make sure your Mac has growl installed.
 
-* Database initialization
+You should also set up `Guardfile` based on your system set up
 
-* How to run the test suite
+This is a sample of my Guardfile that uses growl as notification. This Guardfile is modified to suit the test suit I use
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+# A sample Guardfile
+# More info at https://github.com/guard/guard#readme
 
-* Deployment instructions
+notification :growl
 
-* ...
+guard :rspec do
+  watch('spec/spec_helper.rb')                        { "spec" }
+  watch('app/controllers/application_controller.rb')  { "spec/controllers" }
+  watch(%r{^app/views/(.+)/.*\.(erb|haml|slim)$})     { |m| "spec/features/#{m[1]}_spec.rb" }
 
+  watch(%r{^spec/.+_spec\.rb$})
+  watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
+  watch(%r{^lib/(.+)\.rb$})                           { |m| "spec/lib/#{m[1]}_spec.rb" }
+  watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { |m| ["spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb"] }
+end
+```
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## Tech stack
+1. Ruby 2.1.0
+2. Rails 4.0.4
+3. Postgresql
