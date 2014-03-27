@@ -20,6 +20,7 @@ class Lead < ActiveRecord::Base
   after_create :add_lead_to_mailchimp
 
   def add_lead_to_mailchimp
+    return nil unless Rails.env.production?
     m = Mailchimp::API.new(ENV["MAILCHIMP_KEY"])
     Mailchimp::Lists.new(m).subscribe(ENV["MAILCHIMP_LIST_ID"], {email: self.email}, { fname: self.first_name, lname: self.last_name})
   end
