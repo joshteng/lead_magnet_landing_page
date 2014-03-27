@@ -10,12 +10,14 @@ Emails will be added to your chosen mailchimp list.
 ## To start the application in development
 1. `bundle install`
 2. `bundle exec rake db:migrate && bundle exec annotate && bundle exec rake db:test:clone`
-3. Define environments in `application.yml` in `config` *(this app uses figaro to manage environment variables)*
+3. Define environment variables in `application.yml` in `config` *(this app uses figaro gem to manage environment variables)*
 4. `bundle exec rails s`
 
 Environment Variables to define
-* ADMIN_EMAIL
-* SECRET_TOKEN
+* ADMIN_EMAIL *email address you want your transactional emails to be sent from*
+* SECRET_TOKEN *a random 128 character long string for your app*
+* MAILCHIMP_KEY *your mailchimp api key*
+* MAILCHIMP_LIST_ID *the mailchimp list you want leads to subscribed to*
 
 #### Sample application.yml file
 ```

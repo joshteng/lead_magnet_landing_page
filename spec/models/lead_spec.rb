@@ -44,4 +44,12 @@ describe Lead do
       expect(@lead).to have(1).error_on(:email)
     end
   end
+
+  describe 'after_save' do
+    it 'should run the proper callbacks' do
+      lead = build(:lead)
+      lead.should_receive(:add_lead_to_mailchimp)
+      lead.run_callbacks(:create)
+    end
+  end
 end

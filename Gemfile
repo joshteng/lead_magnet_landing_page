@@ -20,6 +20,7 @@ gem 'kaminari', '~> 0.15.0' # Paging
 gem 'friendly_id', '~> 5.0.2' # Slugs and friendly id's
 gem 'font-awesome-sass', '~> 4.0.2' # font-awesome
 gem 'bootstrap-sass', '~> 3.0.3.0'
+gem 'mailchimp-api', require: 'mailchimp'
 
 group :development do
   gem 'annotate'
