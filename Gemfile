@@ -22,9 +22,10 @@ gem 'font-awesome-sass', '~> 4.0.2' # font-awesome
 gem 'bootstrap-sass', '~> 3.0.3.0'
 
 group :development do
- gem 'annotate'
- gem 'guard-rspec', require: false
- gem 'growl'
+  gem 'annotate'
+  gem 'guard-rspec', require: false
+  gem 'growl'
+  gem 'debugger'
 end
 
 group :test, :development do
@@ -33,10 +34,10 @@ group :test, :development do
   gem 'figaro', '~> 0.7.0'     # env variables
   gem "rspec-rails", '~> 2.14.1'
   gem "factory_girl_rails"
+  gem "faker", require: false
 end
 
 group :test do
-  gem "faker"
   gem "database_cleaner"
   gem "launchy"
   gem "selenium-webdriver"

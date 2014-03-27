@@ -27,7 +27,7 @@ describe Lead do
       blank_emails = [nil, ""]
       blank_emails.each do |e|
         @lead.email = e
-        expect(@lead).to_not be_valid
+        expect(@lead).to have(2).errors_on(:email)
       end
     end
 
@@ -35,13 +35,13 @@ describe Lead do
       invalid_emails = ["@example.com", "john.com", "john@example", "john"]
       invalid_emails.each do |e|
         @lead.email = e
-        expect(@lead).to_not be_valid
+        expect(@lead).to have(1).errors_on(:email)
       end
     end
 
     it "is invalid when a lead with similar email already exists" do
       Lead.create(email: @lead.email)
-      expect(@lead).to_not be_valid
+      expect(@lead).to have(1).error_on(:email)
     end
   end
 end
