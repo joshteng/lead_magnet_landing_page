@@ -41,6 +41,8 @@ group :test do
   gem "launchy"
   gem "selenium-webdriver"
   gem "capybara", '~> 2.2.1'
+  gem 'simplecov'
+  gem "codeclimate-test-reporter"
 end
 
 group :doc do

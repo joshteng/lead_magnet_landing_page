@@ -8,9 +8,9 @@ Emails will be added to your chosen mailchimp list.
 
 ## To start the application in development
 1. `bundle install`
-2. `rake db:migrate && annotate && rake db:test:clone`
+2. `bundle exec rake db:migrate && bundle exec annotate && bundle exec rake db:test:clone`
 3. Define environments in `application.yml` in `config` *(this app uses figaro to manage environment variables)*
-4. `rails s`
+4. `bundle exec rails s`
 
 Environment Variables to define
 * ADMIN_EMAIL
@@ -23,9 +23,12 @@ SECRET_TOKEN: "ae6f4909a3d4725ab716fe1b56jab895f43bd47558f6d0baa6db52eedc266b015
 ```
 
 ## Test!
-Just run `rspec spec`
+Just run `bundle exec rspec spec`
 
 #### Automate testing during development
+1. Create a Guardfile *see below*
+2. Just run `bundle exec guard`
+
 I've included growl and guard for auto testing. To use growl, please make sure your Mac has growl installed.
 
 You should also set up `Guardfile` based on your system set up
