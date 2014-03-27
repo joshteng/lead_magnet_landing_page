@@ -25,6 +25,7 @@ group :development do
  gem 'annotate'
  gem 'guard-rspec', require: false
  gem 'growl'
+ gem 'travis', :git => "https://github.com/travis-ci/travis.rb"
 end
 
 group :test, :development do

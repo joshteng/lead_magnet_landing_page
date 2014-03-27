@@ -7,6 +7,22 @@ GIT
       email_validator (~> 1.4)
       rails (>= 3.1)
 
+GIT
+  remote: https://github.com/travis-ci/travis.rb
+  revision: 784f12aa6c6f4bfa938f823c37d668c6d578e30b
+  specs:
+    travis (1.6.8)
+      addressable (~> 2.3)
+      backports
+      faraday (~> 0.8.7)
+      faraday_middleware (~> 0.9)
+      gh (~> 0.13)
+      highline (~> 1.6)
+      launchy (~> 2.1)
+      pry (~> 0.9)
+      pusher-client (~> 0.4)
+      typhoeus (~> 0.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -41,6 +57,7 @@ GEM
     arel (4.0.2)
     atomic (1.1.16)
     awesome_print (1.2.0)
+    backports (3.6.0)
     bcrypt (3.1.7)
     bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
@@ -75,6 +92,8 @@ GEM
     email_validator (1.4.0)
       activemodel
     erubis (2.7.0)
+    ethon (0.7.0)
+      ffi (>= 1.3.0)
     execjs (2.0.2)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
@@ -83,6 +102,10 @@ GEM
       railties (>= 3.0.0)
     faker (1.3.0)
       i18n (~> 0.5)
+    faraday (0.8.9)
+      multipart-post (~> 1.2.0)
+    faraday_middleware (0.9.0)
+      faraday (>= 0.7.4, < 0.9)
     ffi (1.9.3)
     figaro (0.7.0)
       bundler (~> 1.0)
@@ -92,6 +115,13 @@ GEM
     formatador (0.2.4)
     friendly_id (5.0.3)
       activerecord (>= 4.0.0)
+    gh (0.13.2)
+      addressable
+      backports
+      faraday (~> 0.8)
+      multi_json (~> 1.0)
+      net-http-persistent (>= 2.7)
+      net-http-pipeline
     growl (1.0.3)
     guard (2.6.0)
       formatador (>= 0.2.4)
@@ -102,6 +132,7 @@ GEM
     guard-rspec (4.2.8)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
+    highline (1.6.21)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -130,6 +161,9 @@ GEM
     mini_portile (0.5.3)
     minitest (4.7.5)
     multi_json (1.9.2)
+    multipart-post (1.2.0)
+    net-http-persistent (2.9.4)
+    net-http-pipeline (1.0.1)
     nio4r (1.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
@@ -139,6 +173,8 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pusher-client (0.4.0)
+      websocket (~> 1.0.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -232,6 +268,8 @@ GEM
       polyglot (>= 0.3.1)
     turbolinks (2.1.0)
       coffee-rails
+    typhoeus (0.6.8)
+      ethon (>= 0.7.0)
     tzinfo (0.3.39)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
@@ -276,5 +314,6 @@ DEPENDENCIES
   simplecov
   slim-rails
   sucker_punch (~> 1.0)
+  travis!
   turbolinks (~> 2.1.0)
   uglifier (~> 2.4.0)
