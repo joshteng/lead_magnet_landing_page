@@ -23,6 +23,8 @@ gem 'bootstrap-sass', '~> 3.0.3.0'
 
 group :development do
  gem 'annotate'
+ gem 'guard-rspec', require: false
+ gem 'growl'
 end
 
 group :test, :development do

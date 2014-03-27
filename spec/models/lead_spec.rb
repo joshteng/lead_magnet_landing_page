@@ -13,5 +13,30 @@
 require 'spec_helper'
 
 describe Lead do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "basic validations" do
+    before :each do
+      @lead = Lead.new(first_name: 'John', last_name: 'Doe', email: 'john.doe@example.com')
+    end
+
+    it "is valid with a first name, last name and email address" do
+      expect(@lead).to be_valid
+    end
+
+    it "is invalid without email address" do
+      blank_emails = [nil, ""]
+      blank_emails.each do |e|
+        @lead.email = e
+        expect(@lead).to_not be_valid
+      end
+    end
+
+    it "is invalid with wrong email syntax" do
+      invalid_emails = ["@example.com", "john.com", "john@example", "john"]
+      invalid_emails.each do |e|
+        @lead.email = e
+        expect(@lead).to_not be_valid
+      end
+    end
+  end
 end
