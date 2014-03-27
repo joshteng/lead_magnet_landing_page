@@ -1,4 +1,5 @@
 [![Code Climate](https://codeclimate.com/github/joshteng/lead_magnet_landing_page.png)](https://codeclimate.com/github/joshteng/lead_magnet_landing_page)
+[![Code Climate](https://codeclimate.com/github/joshteng/lead_magnet_landing_page/coverage.png)](https://codeclimate.com/github/joshteng/lead_magnet_landing_page)
 [![Build Status](https://travis-ci.org/joshteng/lead_magnet_landing_page.svg?branch=master)](https://travis-ci.org/joshteng/lead_magnet_landing_page)
 
 # Lead Magnet Landing Page
