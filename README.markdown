@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/joshteng/lead_magnet_landing_page.png)](https://codeclimate.com/github/joshteng/lead_magnet_landing_page)
+
 # Lead Magnet Landing Page
 
 This app allows you to create landing pages to capture lead (collect name and email) in exchange of some bribery (ebook, video, etc+)
