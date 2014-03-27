@@ -7,6 +7,6 @@ class CreateLeads < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :leads, :email
+    add_index :leads, :email, unique: true
   end
 end

@@ -38,5 +38,10 @@ describe Lead do
         expect(@lead).to_not be_valid
       end
     end
+
+    it "is invalid when a lead with similar email already exists" do
+      Lead.create(email: "john.doe@example.com")
+      expect(@lead).to_not be_valid
+    end
   end
 end
