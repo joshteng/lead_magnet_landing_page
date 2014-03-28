@@ -3,7 +3,7 @@ rvm:
   - 2.1.0
 
 env:
-  - SECRET_TOKEN=njknfwkjnfwkjfnwefjknwkfjnwefkwjefnjkfw BAR=bar
+  - SECRET_TOKEN=njknfwkjnfwkjfnwefjknwkfjnwefkwjefnjkfw ADMIN_EMAIL=example@mailer.com
 
 addons:
   code_climate:
