@@ -24,7 +24,7 @@ describe LeadsController do
 
       it "redirects to lead#show" do
         post :create, lead: attributes_for(:lead)
-        expect(response).to redirect_to thank_you_path(assigns[:lead])
+        expect(response).to redirect_to thank_you_path(ref: assigns[:lead])
       end
 
     end

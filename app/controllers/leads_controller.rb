@@ -7,7 +7,7 @@ class LeadsController < ApplicationController
   def create
     @lead = Lead.new(lead_params)
     if @lead.save
-      redirect_to thank_you_path(@lead)
+      redirect_to thank_you_path(ref: @lead)
     else
       render :new
     end
