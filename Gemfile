@@ -30,6 +30,7 @@ group :development do
 end
 
 group :test, :development do
+  gem 'letter_opener'
   gem 'rails_layout', '~> 0.5.11'  # Bootstrap 3 layout generator
   gem 'awesome_print'
   gem 'figaro', '~> 0.7.0'     # env variables

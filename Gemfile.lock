@@ -124,6 +124,8 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.2)
       addressable (~> 2.3)
+    letter_opener (1.2.0)
+      launchy (~> 2.2)
     listen (2.7.1)
       celluloid (>= 0.15.2)
       celluloid-io (>= 0.15.0)
@@ -277,6 +279,7 @@ DEPENDENCIES
   jquery-rails (~> 3.0.4)
   kaminari (~> 0.15.0)
   launchy
+  letter_opener
   mailchimp-api
   pg
   rails (= 4.0.4)

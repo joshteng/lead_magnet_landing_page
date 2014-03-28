@@ -2,6 +2,9 @@ language: ruby
 rvm:
   - 2.1.0
 
+env:
+  - SECRET_TOKEN=njknfwkjnfwkjfnwefjknwkfjnwefkwjefnjkfw BAR=bar
+
 addons:
   code_climate:
     repo_token:
