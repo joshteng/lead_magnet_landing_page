@@ -7,7 +7,8 @@ class LeadsController < ApplicationController
   def create
     @lead = Lead.new(lead_params)
     if @lead.save
-      LeadMailer.new(@lead.id).deliver
+      EmailJob.new.async.perform(:new_lead, { lead_id: @lead.id })
+      LeadJob.new.async.perform(:new_lead, { lead_id: @lead.id })
       redirect_to thank_you_path(ref: @lead)
     else
       render :new

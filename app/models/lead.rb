@@ -17,8 +17,6 @@ class Lead < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
 
-  after_create :add_lead_to_mailchimp
-
   def add_lead_to_mailchimp
     return nil unless Rails.env.production?
     m = Mailchimp::API.new(ENV["MAILCHIMP_KEY"])
