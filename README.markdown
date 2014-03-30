@@ -7,6 +7,12 @@
 This app allows you to create landing pages to capture lead (collect name and email) in exchange of some bribery (ebook, video, etc+)
 Emails will be added to your chosen mailchimp list.
 
+## To Do
+1. Fix user model and Clearance
+2. Admin notification on new lead
+3. Admin dashboard to view leads
+
+
 ## To start the application in development
 1. `bundle install`
 2. `bundle exec rake db:migrate && bundle exec annotate && bundle exec rake db:test:clone`
@@ -56,7 +62,7 @@ guard :rspec do
 end
 ```
 
-## Tech stack
+## Developed with
 1. Ruby 2.1.0
 2. Rails 4.0.4
 3. Postgresql
