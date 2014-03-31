@@ -1,0 +1,1 @@
+MAILCHIMP = Mailchimp::API.new(ENV["MAILCHIMP_KEY"])

@@ -29,13 +29,13 @@ EbookLandingPage::Application.configure do
    # Tell Action Mailer not to deliver emails to the real world.
    # The :test delivery method accumulates sent emails in the
    # ActionMailer::Base.deliveries array.
-   config.action_mailer.delivery_method = :test
 
    # Print deprecation notices to the stderr.
    config.active_support.deprecation = :stderr
 
    # Mailer
-   config.action_mailer.delivery_method = :letter_opener
+   config.action_mailer.delivery_method = :cache
+   config.action_mailer.cache_settings = { :location => "#{Rails.root}/tmp/mail.cache" }
    config.action_mailer.raise_delivery_errors = true
    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end

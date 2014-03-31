@@ -22,6 +22,16 @@ describe LeadsController do
         expect{ post :create, lead: attributes_for(:lead) }.to change(Lead, :count).by(1)
       end
 
+      it "emails the lead" do
+        pending "it calls #send_welcome_email"
+        # Lead.should_receive(:send_welcome_email)
+        # post :create, lead: attributes_for(:lead)
+      end
+
+      it "adds the lead to mailchimp" do
+        pending "it calls #add_lead_to_mailchimp"
+      end
+
       it "redirects to lead#show" do
         post :create, lead: attributes_for(:lead)
         expect(response).to redirect_to thank_you_path(ref: assigns[:lead])

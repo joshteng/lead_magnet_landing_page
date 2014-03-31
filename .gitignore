@@ -31,3 +31,4 @@ doc/
 Guardfile #this should not be checked in because it is specific to my machine set up
 
 coverage/
+features/

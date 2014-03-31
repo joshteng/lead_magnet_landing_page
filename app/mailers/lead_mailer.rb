@@ -3,6 +3,6 @@ class LeadMailer < ActionMailer::Base
 
   def new(lead_id)
     @lead = Lead.find(lead_id)
-    mail to: @lead.email
+    mail to: @lead.email, subject: "Thanks!"
   end
 end

@@ -46,6 +46,8 @@ group :test do
   gem "capybara", '~> 2.2.1'
   gem 'simplecov'
   gem "codeclimate-test-reporter"
+  gem 'email_spec'
+  gem 'action_mailer_cache_delivery'
 end
 
 group :doc do

@@ -19,7 +19,10 @@ class Lead < ActiveRecord::Base
 
   def add_lead_to_mailchimp
     return nil unless Rails.env.production?
-    m = Mailchimp::API.new(ENV["MAILCHIMP_KEY"])
-    Mailchimp::Lists.new(m).subscribe(ENV["MAILCHIMP_LIST_ID"], {email: self.email}, { fname: self.first_name, lname: self.last_name})
+    LeadJob.new.async.perform(:new_lead, { lead_id: self.id })
+  end
+
+  def send_welcome_email
+    EmailJob.new.async.perform(:new_lead, { lead_id: self.id })
   end
 end
