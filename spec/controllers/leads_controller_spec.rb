@@ -11,7 +11,7 @@ describe LeadsController do
     end
 
     it "render the :new template" do
-      expect(response).to render_template :new
+      expect(response).to render_template(:new)
     end
   end
 
@@ -24,12 +24,14 @@ describe LeadsController do
 
       it "emails the lead" do
         pending "it calls #send_welcome_email"
-        # Lead.should_receive(:send_welcome_email)
+        # assigns(:lead).should_receive(:send_welcome_email)
         # post :create, lead: attributes_for(:lead)
       end
 
       it "adds the lead to mailchimp" do
         pending "it calls #add_lead_to_mailchimp"
+        # assigns(:lead).should_receive(:add_lead_to_mailchimp)
+        # post :create, lead: attributes_for(:lead)
       end
 
       it "redirects to lead#show" do
@@ -46,7 +48,7 @@ describe LeadsController do
 
       it "re-renders the :new template" do
         post :create, lead: attributes_for(:invalid_lead)
-        expect(response).to render_template :new
+        expect(response).to render_template(:new)
       end
     end
   end

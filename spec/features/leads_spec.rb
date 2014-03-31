@@ -20,5 +20,6 @@ feature 'Lead' do
 
     expect(page).to have_content "#{lead[:first_name]}"
 
+    pending "lead receives an email and mailchimp gets a new subscirber"
   end
 end

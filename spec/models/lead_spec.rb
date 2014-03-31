@@ -58,7 +58,7 @@ describe Lead do
   describe "#add_lead_to_mailchimp" do
     let(:lead) { create(:lead) }
     it "adds lead to mailchimp" do
-      pending "should I stub this or test that it added for real?"
+      pending "should I mock this or test that it added for real?"
     end
   end
 end

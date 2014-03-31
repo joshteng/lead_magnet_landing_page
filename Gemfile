@@ -27,6 +27,7 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'growl'
   gem 'debugger'
+  gem 'travis'
 end
 
 group :test, :development do
