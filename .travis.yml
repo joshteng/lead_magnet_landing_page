@@ -3,7 +3,9 @@ rvm:
   - 2.1.0
 
 env:
-  - secure: "Ko4ZFXLBJejgB/+gPHrPVfm1o1BcLFHJo1gJ5psc8K9/PcnBR3Z3ad9BMradNLcP9Hzc5YFq+k3JvW2VN04t1nahqzAgfRdkn0zue8omcliqHk7CBaBwe2T8pSN2yIOhcbCW1QBK8rfOrf008sriS0BGUFDjSAPtUzUKvgg7vtQ=" secure: "AAy6uPQTUYR5q9Se8xJnWpujnfW3BaUQ7z9HywkkJRa1RufHixyr6izOORBftX5ZaxhOxoKDe9FpTLw/fW4K6ch0bMobrtKadG3fcfmDBWjkTdbTTB4diLORLwpYJ6PfwPu9XEhhaDsHDU2sqOCSLSqZgmt5SIyC3smBKs/JHcU="
+  global:
+    - secure: "Ko4ZFXLBJejgB/+gPHrPVfm1o1BcLFHJo1gJ5psc8K9/PcnBR3Z3ad9BMradNLcP9Hzc5YFq+k3JvW2VN04t1nahqzAgfRdkn0zue8omcliqHk7CBaBwe2T8pSN2yIOhcbCW1QBK8rfOrf008sriS0BGUFDjSAPtUzUKvgg7vtQ="
+    - secure: "AAy6uPQTUYR5q9Se8xJnWpujnfW3BaUQ7z9HywkkJRa1RufHixyr6izOORBftX5ZaxhOxoKDe9FpTLw/fW4K6ch0bMobrtKadG3fcfmDBWjkTdbTTB4diLORLwpYJ6PfwPu9XEhhaDsHDU2sqOCSLSqZgmt5SIyC3smBKs/JHcU="
 
 addons:
   code_climate:

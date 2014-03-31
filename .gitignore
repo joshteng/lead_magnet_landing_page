@@ -32,3 +32,5 @@ Guardfile #this should not be checked in because it is specific to my machine se
 
 coverage/
 features/
+Vagrantfile
+.vagrant/
