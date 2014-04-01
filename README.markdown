@@ -32,10 +32,18 @@ SECRET_TOKEN: "ae6f4909a3d4725ab716fe1b56jab895f43bd47558f6d0baa6db52eedc266b015
 ```
 
 ## Test!
-Just run `bundle exec rspec spec`
+Just run `bundle exec rspec spec`  
+Run with zeus
+
+1. `zeus start`
+2. `zeus rspec spec`
+
+Time the difference!  
+`zeus rspec spec` vs `bundle exec rspec spec`
 
 #### Automate testing during development
 1. Create a Guardfile *see below*
+2. Start zeus: `zeus start`
 2. Just run `bundle exec guard`
 
 I've included growl and guard for auto testing. To use growl, please make sure your Mac has growl installed.
