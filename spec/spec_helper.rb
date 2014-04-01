@@ -8,7 +8,7 @@ SimpleCov.start 'rails'
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
+# require 'rspec/autorun' #commented out for guard and zeus to play nice
 require "email_spec"
 require 'sucker_punch/testing/inline'
 

@@ -3,7 +3,8 @@
 
 notification :growl
 
-guard :rspec do
+#zeusssss! extremely fast test
+guard :rspec, cmd: 'zeus rspec', all_after_pass: true do
   watch('spec/spec_helper.rb')                        { "spec" }
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
   watch(%r{^app/views/(.+)/.*\.(erb|haml|slim)$})     { |m| "spec/features/#{m[1]}_spec.rb" }

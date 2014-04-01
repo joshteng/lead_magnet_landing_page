@@ -22,17 +22,17 @@ gem 'font-awesome-sass', '~> 4.0.2' # font-awesome
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'mailchimp-api', require: 'mailchimp'
 
-gem 'unicorn'
+gem 'unicorn', require: false
 
 group :development do
-  gem 'annotate'
+  gem 'annotate', require: false
   gem 'guard-rspec', require: false
-  gem 'growl'
+  gem 'growl', require: false
   gem 'debugger'
+  gem 'letter_opener'
 end
 
 group :test, :development do
-  gem 'letter_opener'
   gem 'rails_layout', '~> 0.5.11'  # Bootstrap 3 layout generator
   gem 'awesome_print'
   gem 'figaro', '~> 0.7.0'     # env variables
@@ -50,6 +50,7 @@ group :test do
   gem "codeclimate-test-reporter"
   gem 'email_spec'
   gem 'action_mailer_cache_delivery'
+  gem 'zeus'
 end
 
 group :doc do
