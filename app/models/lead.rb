@@ -18,7 +18,8 @@ class Lead < ActiveRecord::Base
                     uniqueness: true
 
   def add_lead_to_mailchimp
-    return nil unless Rails.env.production?
+    return nil unless Rails.env.production? #skip this is development
+    # return nil if Rails.env.development? #skip this is development
     LeadJob.new.async.perform(:new_lead, { lead_id: self.id })
   end
 

@@ -24,7 +24,7 @@ describe LeadsController do
 
       it "emails the lead" do
         pending "it calls #send_welcome_email"
-        # assigns(:lead).should_receive(:send_welcome_email)
+        # expect(assigns(:lead)).to receive(:send_welcome_email)
         # post :create, lead: attributes_for(:lead)
       end
 

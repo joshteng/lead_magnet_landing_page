@@ -56,8 +56,17 @@ describe Lead do
   end
 
   describe "#add_lead_to_mailchimp" do
-    let(:lead) { create(:lead) }
+    let(:lead) { create(:lead, email: 'joshteng@me.com') }
     it "adds lead to mailchimp" do
+
+      # ##Use VCR to record this
+      # lead.add_lead_to_mailchimp
+      # #retrieving mailchimp list
+      # puts Mailchimp::Lists.new(MAILCHIMP).members(ENV["MAILCHIMP_LIST_ID"])
+      # #this lead should be subscribed to the list
+
+      #remove lead from mailchimp list (just for the specs.. dont want a growing list) (create a macro so that it would clean mailchimp list everytime I create a new lead)
+
       pending "should I mock this or test that it added for real?"
     end
   end

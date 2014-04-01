@@ -20,6 +20,7 @@ feature 'Lead' do
 
     expect(page).to have_content "#{lead[:first_name]}"
 
-    pending "lead receives an email and mailchimp gets a new subscirber"
+    # pending "lead receives an email and mailchimp gets a new subscirber"
+    # if I'm already testing this in controller, model and mailer should be ok not to test it
   end
 end

@@ -1,3 +1,6 @@
 - title("Thanks")
-h2 Thanks "#{@lead.first_name}"
+- if @lead.present?
+  h2 Thanks "#{@lead.first_name}"
+- else
+  ht Thanks!
 p Your unique download link has been emailed to you!
