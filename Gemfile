@@ -22,6 +22,8 @@ gem 'font-awesome-sass', '~> 4.0.2' # font-awesome
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'mailchimp-api', require: 'mailchimp'
 
+gem 'unicorn'
+
 group :development do
   gem 'annotate'
   gem 'guard-rspec', require: false
