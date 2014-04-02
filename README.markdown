@@ -9,9 +9,10 @@ This app allows you to create landing pages to capture lead (collect name and em
 Emails will be added to your chosen mailchimp list.
 
 ## To Do
-1. Fix user model and Clearance
-2. Admin notification on new lead
-3. Admin dashboard to view leads
+1. Use VCR for mailchimp specs
+2. Fix user model and Clearance
+3. Admin notification on new lead
+4. Admin dashboard to view leads
 
 
 ## To start the application in development
@@ -75,3 +76,8 @@ end
 1. Ruby 2.1.0
 2. Rails 4.0.4
 3. Postgresql
+
+## Misc
+1. When running test suite, new subscribers will be added to mailchimp, to clean mailchimp list occassionally run `RAILS_ENV=test be rake mailchimp_list:wipe`
+2. Consider stubbing out all instances of Lead#add_lead_to_mailchimp method except for unit test
+
