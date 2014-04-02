@@ -17,19 +17,21 @@ set :shared_paths, ['config/database.yml', 'config/application.yml', 'log']
 set :user, 'deploy'    # Username in the server to SSH to.
 #   set :port, '30000'     # SSH port number.
 
+RYAML = <<-BASH
+function ryaml {
+  ruby -ryaml -e 'puts ARGV[1..-1].inject(YAML.load(File.read(ARGV[0]))) {|acc, key| acc[key] }' "$@"
+};
+BASH
+
 task :environment do
   invoke :'rbenv:load'
 end
 
 task :restart do
   queue 'sudo service nginx restart'
+  queue 'sudo service postgresql restart'
+  queue "sudo service unicorn_#{app_name} restart"
 end
-
-task :down do
-  invoke :restart #restarts nginx
-  # invoke :logs
-end
-
 
 task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
@@ -49,12 +51,6 @@ end
 
 # Create the new database based on information from database.yml
 # In this application DB, user is given full access to the new DB
-RYAML = <<-BASH
-function ryaml {
-  ruby -ryaml -e 'puts ARGV[1..-1].inject(YAML.load(File.read(ARGV[0]))) {|acc, key| acc[key] }' "$@"
-};
-BASH
-
 desc "Create new database"
 task :'setup:db' => :environment do
   queue! %{
@@ -72,6 +68,22 @@ task :'setup:db' => :environment do
     #{echo_cmd %[sudo -u postgres psql -c "$SQL"]}
     echo "-----> Done"
   }
+end
+
+desc "Deploys the current version to the server."
+task :deploy => :environment do
+  deploy do
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    invoke :'rails:db_migrate'
+    invoke :'rails:assets_precompile'
+    # invoke :'symlink:all_config'
+
+    # to :launch do
+    #   queue "touch #{deploy_to}/tmp/restart.txt"
+    # end
+  end
 end
 
 
@@ -123,18 +135,4 @@ namespace :start do
 end
 
 
-desc "Deploys the current version to the server."
-task :deploy => :environment do
-  deploy do
-    invoke :'git:clone'
-    invoke :'deploy:link_shared_paths'
-    invoke :'bundle:install'
-    invoke :'rails:db_migrate'
-    invoke :'rails:assets_precompile'
-    # invoke :'symlink:all_config'
 
-    # to :launch do
-    #   queue "touch #{deploy_to}/tmp/restart.txt"
-    # end
-  end
-end

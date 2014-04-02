@@ -33,6 +33,15 @@ ADMIN_EMAIL: "josh@example.com"
 SECRET_TOKEN: "ae6f4909a3d4725ab716fe1b56jab895f43bd47558f6d0baa6db52eedc266b01555057c740kb76cd03cec46a4y70ffdcaa355dd9c1fbe993e2c2114f678ecc20"
 ```
 
+## To Deploy
+Set up your server with necessary packages
+```sh
+mina setup
+mina setup:db
+mina deploy
+mina start:all
+```
+
 ## Test!
 Just run `bundle exec rspec spec`  
 Run with zeus
