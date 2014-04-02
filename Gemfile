@@ -23,6 +23,7 @@ gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'mailchimp-api', require: 'mailchimp'
 
 gem 'unicorn', require: false
+gem 'figaro', '~> 0.7.0'     # env variables
 
 group :development do
   gem 'annotate', require: false
@@ -35,7 +36,6 @@ end
 group :test, :development do
   gem 'rails_layout', '~> 0.5.11'  # Bootstrap 3 layout generator
   gem 'awesome_print'
-  gem 'figaro', '~> 0.7.0'     # env variables
   gem "rspec-rails", '~> 2.14.1'
   gem "factory_girl_rails"
   gem "faker", require: false
