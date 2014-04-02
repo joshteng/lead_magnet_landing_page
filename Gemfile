@@ -43,7 +43,7 @@ end
 group :test do
   gem "database_cleaner"
   gem "launchy"
-  gem "selenium-webdriver"
+  gem "selenium-webdriver", "2.41.0"
   gem "capybara", '~> 2.2.1'
   gem 'simplecov'
   gem "codeclimate-test-reporter"
