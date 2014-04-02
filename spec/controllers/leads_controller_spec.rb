@@ -23,7 +23,9 @@ describe LeadsController do
       end
 
       it "emails the lead" do
-        Lead.any_instance.should_receive(:send_welcome_email)
+        # expect(Lead.any_instance).to receive(:send_welcome_email) #doesnt work
+        expect_any_instance_of(Lead).to receive(:send_welcome_email)
+        # Lead.any_instance.should_receive(:send_welcome_email)
         post :create, lead: attributes_for(:lead)
       end
 

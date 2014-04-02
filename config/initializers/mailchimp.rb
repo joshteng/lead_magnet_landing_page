@@ -1,1 +1,1 @@
-MAILCHIMP = Mailchimp::API.new(ENV["MAILCHIMP_KEY"])
+MAILCHIMP = Mailchimp::API.new(ENV["MAILCHIMP_KEY"]) #this may not be threadsafe

@@ -37,6 +37,11 @@ after_fork do |server, worker|
   port = 5000 + worker.nr
   child_pid = server.config[:pid].sub('.pid', ".#{port}.pid")
   system("echo #{Process.pid} > #{child_pid}")
-   defined?(ActiveRecord::Base) and
-    ActiveRecord::Base.establish_connection
+  if defined?(ActiveRecord::Base)
+    config = ActiveRecord::Base.configurations[Rails.env]
+    config['reaping_frequency'] = ENV['DB_REAP_FREQ'] || 10 # seconds
+    config['pool']            =   ENV['DB_POOL'] || 2
+    ActiveRecord::Base.establish_connection(config)
+  end
+
 end
