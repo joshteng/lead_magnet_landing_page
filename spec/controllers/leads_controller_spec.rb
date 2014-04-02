@@ -23,15 +23,13 @@ describe LeadsController do
       end
 
       it "emails the lead" do
-        pending "it calls #send_welcome_email"
-        # expect(assigns(:lead)).to receive(:send_welcome_email)
-        # post :create, lead: attributes_for(:lead)
+        Lead.any_instance.should_receive(:send_welcome_email)
+        post :create, lead: attributes_for(:lead)
       end
 
       it "adds the lead to mailchimp" do
-        pending "it calls #add_lead_to_mailchimp"
-        # assigns(:lead).should_receive(:add_lead_to_mailchimp)
-        # post :create, lead: attributes_for(:lead)
+        Lead.any_instance.should_receive(:add_lead_to_mailchimp)
+        post :create, lead: attributes_for(:lead)
       end
 
       it "redirects to lead#show" do

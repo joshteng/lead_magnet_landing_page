@@ -63,7 +63,7 @@ describe Lead do
       # lead.add_lead_to_mailchimp
       # #retrieving mailchimp list
       # puts Mailchimp::Lists.new(MAILCHIMP).members(ENV["MAILCHIMP_LIST_ID"])
-      # #this lead should be subscribed to the list
+      # #this lead should be subscribed to the list (mailchimp doesnt subscribe until user clicks on confirm.. how can I hack this? I dont seem to be able to disable double opt-in either)
 
       #remove lead from mailchimp list (just for the specs.. dont want a growing list) (create a macro so that it would clean mailchimp list everytime I create a new lead)
 
