@@ -50,6 +50,8 @@ group :test do
   gem 'email_spec'
   gem 'action_mailer_cache_delivery'
   gem 'zeus'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :doc do

@@ -18,11 +18,11 @@ describe LeadsController do
 
   describe "POST #create" do
     context "with valid attributes" do
-      it "saves the new lead in the database" do
+      it "saves the new lead in the database", :vcr do
         expect{ post :create, lead: attributes_for(:lead) }.to change(Lead, :count).by(1)
       end
 
-      it "emails the lead" do
+      it "emails the lead", :vcr do
         # expect(Lead.any_instance).to receive(:send_welcome_email) #doesnt work
         expect_any_instance_of(Lead).to receive(:send_welcome_email)
         # Lead.any_instance.should_receive(:send_welcome_email)
@@ -34,7 +34,7 @@ describe LeadsController do
         post :create, lead: attributes_for(:lead)
       end
 
-      it "redirects to lead#show" do
+      it "redirects to lead#show", :vcr do
         post :create, lead: attributes_for(:lead)
         expect(response).to redirect_to thank_you_path(ref: assigns[:lead])
       end

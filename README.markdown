@@ -79,5 +79,5 @@ end
 
 ## Misc
 1. When running test suite, new subscribers will be added to mailchimp, to clean mailchimp list occassionally run `RAILS_ENV=test be rake mailchimp_list:wipe`
-2. Consider stubbing out all instances of Lead#add_lead_to_mailchimp method except for unit test
+2. Consider stubbing out invocation of Lead#add_to_mailchimp method except for unit test (currently using VCR to speed up test without making actual API calls). The current 4 specs that uses that method: (1) Lead sign up, (2) LeadsController POST #create with valid attributes saves the new lead in the database, (3) LeadsController POST #create with valid attributes redirects to lead#show, (4) LeadsController POST #create with valid attributes emails the lead
 

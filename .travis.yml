@@ -1,14 +1,14 @@
 language: ruby
 rvm:
-  - 2.1.0
-
+- 2.1.0
 env:
   global:
-    - secure: "Ko4ZFXLBJejgB/+gPHrPVfm1o1BcLFHJo1gJ5psc8K9/PcnBR3Z3ad9BMradNLcP9Hzc5YFq+k3JvW2VN04t1nahqzAgfRdkn0zue8omcliqHk7CBaBwe2T8pSN2yIOhcbCW1QBK8rfOrf008sriS0BGUFDjSAPtUzUKvgg7vtQ="
-    - secure: "AAy6uPQTUYR5q9Se8xJnWpujnfW3BaUQ7z9HywkkJRa1RufHixyr6izOORBftX5ZaxhOxoKDe9FpTLw/fW4K6ch0bMobrtKadG3fcfmDBWjkTdbTTB4diLORLwpYJ6PfwPu9XEhhaDsHDU2sqOCSLSqZgmt5SIyC3smBKs/JHcU="
-    - secure: "nXXRCOY8kYNqrUhO3lQaJy8D4sCnmn9ysNH7tYDor2RNLJXnQzQ33Q86ZXrcUOYtd0U7ojx9CuUoGO+Dji0QS43JC3N+bjla2TOspNnCcSpLaExeAMk4h08DOzeiqkk9Jol8m9ljevCCvrFEF4tfF9TcLdVFhA+Oh9wd8Ah8FHA="
-
+  - secure: ZCE9T7ZK+p3gXpHQkPQi3KL2CqhVXYf5dUZoUaO6IhFl6ev6YDqb+blKz3BbEx4yME6UabJ6NfzW8ys5Bt4BKT+ZIj/2zcnrYvbImnVZ/w3e8g7vnFWvI3fjJqPBnDYYYqtzp8HymbwnmHC8zTuCvDLu9vql3exrM54CwoANjiU=
+  - secure: TvkZGeWiptnxSv017/hJiIse6wtzpZIYBvnHZQk0Z15f+PGk32QYonHxasCLAL21uWBE5J2MCgEN8Jmpa2/2bDM5YFWK8shuKlYGAR7VItEQvIqSoKzN7tN3bWfI1Atah3Q415hmOe0bLO5m/yJbUmyGlAWlLLlNgPwv/80R5OQ=
+  - secure: E2aQ0OM1ji8ssFw7YrsQTNHm3jr3XifbLbPtWYBEJ1xLSWjGwjx3bXd6qvvl24psIHvkpQ2p3ioc4606r0hVds51sIWwtupILMda//0U9LneW6qZtFbj4ynIQz5orCGFTSyBr/OhZl8xR5vza/HrB46OFyLFnFpBhEhRHcpNChw=
+  - secure: ONSgO5Z2X630tRtoEAJw+O3rzS0Lmx/i/beGA8pGuzi2W9GA3fNpscPK+WmX2xdL7CzaaUQ1taLB/9DPKTK6xs49GhMMhbxavbBBQQf6oldztQbpOp2mQSkkch9MHpGA6Uw/U1CIZEwW7cT0KzQGIniKNXm7j+5RfbirHT9KNfI=
+  - secure: l5amC9a94Urci57zN8G2kcwMXleQnwpIea+wSXecs0bxlxtnuFeFmNJVkEBxS5s6h8h61Z10I2DWY4Hpeq7CwhNg83HKiH3ltq5+iXkkLn5l21EaRjJr6vLKhDVNIwT8e7XLWQESUAI863xhpOly/oxehQEoENN+PGdCAy5PXIg=
 addons:
   code_climate:
     repo_token:
-      secure: "OAiYKOqgTthNTljpVaOobdwG8cwATjWuhKxmfzZtG0hkPUmaHB2vPFfa4rhbKAEKoORYII7LGAVeomiRmGFbhydO6TtLa+tYL7jr40UaUtIAobhgP+5rQoxJ1wdt+vIVYCrS3HVX5cZ3F3f+XH4W5i5leu4sQ+h1//SlTjvwNUY="
+      secure: OAiYKOqgTthNTljpVaOobdwG8cwATjWuhKxmfzZtG0hkPUmaHB2vPFfa4rhbKAEKoORYII7LGAVeomiRmGFbhydO6TtLa+tYL7jr40UaUtIAobhgP+5rQoxJ1wdt+vIVYCrS3HVX5cZ3F3f+XH4W5i5leu4sQ+h1//SlTjvwNUY=

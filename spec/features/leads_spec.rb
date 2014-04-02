@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Lead' do
-  scenario "sign up" do
+  scenario "sign up", :vcr do
     lead = attributes_for(:lead)
 
     expect {
