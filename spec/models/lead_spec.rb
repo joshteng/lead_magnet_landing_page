@@ -58,16 +58,15 @@ describe Lead do
   describe "#add_lead_to_mailchimp" do
     let(:lead) { create(:lead, email: 'joshteng@me.com') }
     it "adds lead to mailchimp" do
+      ##Use VCR to record this
+      lead.add_lead_to_mailchimp
+      subscribers = Mailchimp::Lists.new(MAILCHIMP).members(ENV["MAILCHIMP_LIST_ID"])["data"] #retrieving mailchimp list
+      subscribers_email = subscribers.map { |subscriber| subscriber["email"] }
 
-      # ##Use VCR to record this
-      # lead.add_lead_to_mailchimp
-      # #retrieving mailchimp list
-      # puts Mailchimp::Lists.new(MAILCHIMP).members(ENV["MAILCHIMP_LIST_ID"])
-      # #this lead should be subscribed to the list (mailchimp doesnt subscribe until user clicks on confirm.. how can I hack this? I dont seem to be able to disable double opt-in either)
+      #refactor into macro?
+      Mailchimp::Lists.new(MAILCHIMP).unsubscribe(ENV["MAILCHIMP_LIST_ID"], {email: lead.email }, true, false, false) #remove lead from mailchimp list
 
-      #remove lead from mailchimp list (just for the specs.. dont want a growing list) (create a macro so that it would clean mailchimp list everytime I create a new lead)
-
-      pending "should I mock this or test that it added for real?"
+      subscribers_email.should include(lead.email)
     end
   end
 end
