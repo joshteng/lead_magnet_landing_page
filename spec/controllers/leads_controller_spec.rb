@@ -30,7 +30,7 @@ describe LeadsController do
       end
 
       it "adds the lead to mailchimp" do
-        Lead.any_instance.should_receive(:add_lead_to_mailchimp)
+        Lead.any_instance.should_receive(:add_to_mailchimp)
         post :create, lead: attributes_for(:lead)
       end
 

@@ -8,7 +8,7 @@ class LeadsController < ApplicationController
     @lead = Lead.new(lead_params)
     if @lead.save
       @lead.send_welcome_email
-      @lead.add_lead_to_mailchimp
+      @lead.add_to_mailchimp
       redirect_to thank_you_path(ref: @lead)
     else
       render :new

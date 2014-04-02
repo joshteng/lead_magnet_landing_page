@@ -55,11 +55,11 @@ describe Lead do
     end
   end
 
-  describe "#add_lead_to_mailchimp" do
+  describe "#add_to_mailchimp" do
     let(:lead) { create(:lead, email: 'joshteng@me.com') }
     it "adds lead to mailchimp" do
       ##Use VCR to record this
-      lead.add_lead_to_mailchimp
+      lead.add_to_mailchimp
       subscribers = Mailchimp::Lists.new(MAILCHIMP).members(ENV["MAILCHIMP_LIST_ID"])["data"] #retrieving mailchimp list
       subscribers_email = subscribers.map { |subscriber| subscriber["email"] }
 
