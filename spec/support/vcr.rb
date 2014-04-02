@@ -1,12 +1,9 @@
-# require 'rubygems'
-# require 'test/unit'
-# require 'vcr'
-
 VCR.configure do |c|
   c.cassette_library_dir = Rails.root.join("spec", "vcr")
   c.hook_into :webmock # or :fakeweb
   c.filter_sensitive_data('APIKEY') { ENV["MAILCHIMP_KEY"] }
   c.filter_sensitive_data('LISTID') { ENV["MAILCHIMP_LIST_ID"] }
+  config.ignore_hosts 'codeclimate.com'
 end
 
 RSpec.configure do |c|
