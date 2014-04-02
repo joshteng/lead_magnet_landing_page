@@ -19,10 +19,10 @@ module EbookLandingPage
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    
+
     # turn off warnings triggered by friendly_id
     I18n.enforce_available_locales = false
-    
+
     # Test framework
     config.generators do |g|
       g.test_framework :rspec,

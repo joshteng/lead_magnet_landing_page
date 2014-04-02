@@ -1,4 +1,4 @@
-root = "/vagrant"
+root = "/home/deploy/apps/current"
 app_name = "lead_magnet"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
@@ -40,7 +40,7 @@ after_fork do |server, worker|
   if defined?(ActiveRecord::Base)
     config = ActiveRecord::Base.configurations[Rails.env]
     config['reaping_frequency'] = ENV['DB_REAP_FREQ'] || 10 # seconds
-    config['pool']            =   ENV['DB_POOL'] || 2
+    config['pool']            =   ENV['DB_POOL'] || 5
     ActiveRecord::Base.establish_connection(config)
   end
 
