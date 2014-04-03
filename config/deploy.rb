@@ -4,11 +4,12 @@ require 'mina/git'
 require 'mina/rbenv'  # for rbenv support
 
 
-set :domain, '128.199.205.103'
+set :domain, 'lead_magnet.growthautomator.com'
 set :deploy_to, '/home/deploy/apps'
 set :repository, 'git@github.com:joshteng/lead_magnet_landing_page.git'
 set :branch, 'deploy-with-mina'
 set :app_name, 'lead_magnet'
+set :test_log, "log/capistrano.test.log"
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
@@ -33,26 +34,41 @@ task :restart do
   queue "sudo service unicorn_#{app_name} restart"
 end
 
-task :setup => :environment do
-  queue! %[mkdir -p "#{deploy_to}/shared/log"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
+desc "Populate database.yml"
+task :'setup:db:database_yml' => :environment do
+  puts "Enter a user for the new database"
+  db_username = STDIN.gets.chomp
+  puts "Enter a password for the new database"
+  db_pass = STDIN.gets.chomp
+  # Virtual Host configuration file
+  database_yml =
+    "production:\n  adapter: postgresql\n  encoding: unicode \n  database: #{app_name}_production\n  username: #{db_username}\n  password: #{db_pass}\n  host: localhost\n  pool: 5\n"
 
-  queue! %[mkdir -p "#{deploy_to}/shared/config"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
+  puts database_yml
+  queue! %{
+    echo "-----> Populating database.yml"
+    echo "#{database_yml}" > #{deploy_to!}/shared/config/database.yml
+    echo "-----> Done"
+  }
+end
 
-  queue! %[touch "#{deploy_to}/shared/config/database.yml"]
-  queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
-
-  queue! %[touch "#{deploy_to}/shared/config/application.yml"]
-  queue  %[echo "-----> Be sure to edit 'shared/config/application.yml'."]
-
-  queue! %[echo "-----> After updating 'database.yml', run `mina setup:db` if this is the first time setting up"]
+desc "Populate application.yml"
+task :'setup:application_yml' => :environment do
+  puts "Paste how your application.yml file should be like. Type `END` and hit return once your done."
+  $/ = "END"
+  application_yml = STDIN.gets
+  application_yml.chomp!("END")
+  queue! %{
+    echo "-----> Populating application.yml"
+    echo "#{application_yml}" > #{deploy_to!}/shared/config/application.yml
+    echo "-----> Done"
+  }
 end
 
 # Create the new database based on information from database.yml
 # In this application DB, user is given full access to the new DB
 desc "Create new database"
-task :'setup:db' => :environment do
+task :'create:db' => :environment do
   queue! %{
     echo "-----> Import RYAML function"
     #{RYAML}
@@ -70,20 +86,45 @@ task :'setup:db' => :environment do
   }
 end
 
+task :setup => :environment do
+  queue! %[mkdir -p "#{deploy_to}/shared/log"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
+
+  queue! %[mkdir -p "#{deploy_to}/shared/config"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
+
+  invoke :'setup:db:database_yml'
+  invoke :'setup:application_yml'
+  invoke :'create:db'
+end
+
+desc "test before deploying"
+task :test do
+  puts "-----> Running test"
+  system "touch #{test_log}"
+  unless system "bundle exec rspec spec > #{test_log} 2>&1"
+    print_error "Test Failed. Fix your errors before deploying"
+    exit
+  else
+    puts "-----> Completed test"
+  end
+end
+
 desc "Deploys the current version to the server."
 task :deploy => :environment do
   deploy do
+    invoke :test
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
-    # invoke :'symlink:all_config'
 
     # to :launch do
     #   queue "touch #{deploy_to}/tmp/restart.txt"
     # end
   end
+  system "mina start:all"
 end
 
 
