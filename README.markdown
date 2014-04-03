@@ -37,7 +37,7 @@ SECRET_TOKEN: "ae6f4909a3d4725ab716fe1b56jab895f43bd47558f6d0baa6db52eedc266b015
 Set up your server with necessary packages
 ```sh
 mina setup
-mina setup:db
+mina create:db
 mina deploy
 mina start:all
 ```

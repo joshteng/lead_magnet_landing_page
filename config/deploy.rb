@@ -1,3 +1,9 @@
+# STEP 1: mina setup
+# STEP 2: mina create:db
+# STEP 3: mina deploy
+# STEP 4: mina start:all
+
+
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
@@ -5,7 +11,7 @@ require 'mina/rbenv'  # for rbenv support
 
 
 set :domain, 'lead_magnet.growthautomator.com'
-set :deploy_to, '/home/deploy/apps'
+set :deploy_to, '/home/deploy/apps' #should already exists
 set :repository, 'git@github.com:joshteng/lead_magnet_landing_page.git'
 set :branch, 'deploy-with-mina'
 set :app_name, 'lead_magnet'
@@ -47,7 +53,7 @@ task :'setup:db:database_yml' => :environment do
   puts database_yml
   queue! %{
     echo "-----> Populating database.yml"
-    echo "#{database_yml}" > #{deploy_to!}/shared/config/database.yml
+    echo "#{database_yml}" > #{deploy_to}/shared/config/database.yml
     echo "-----> Done"
   }
 end
@@ -60,9 +66,22 @@ task :'setup:application_yml' => :environment do
   application_yml.chomp!("END")
   queue! %{
     echo "-----> Populating application.yml"
-    echo "#{application_yml}" > #{deploy_to!}/shared/config/application.yml
+    echo "#{application_yml}" > #{deploy_to}/shared/config/application.yml
     echo "-----> Done"
   }
+end
+
+task :setup => :environment do
+  queue! %[mkdir -p "#{deploy_to}/shared/log"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
+
+  queue! %[mkdir -p "#{deploy_to}/shared/config"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
+
+  invoke :'setup:db:database_yml'
+  invoke :'setup:application_yml'
+
+  puts "---> Create your database by running `mina create:db"
 end
 
 # Create the new database based on information from database.yml
@@ -84,18 +103,8 @@ task :'create:db' => :environment do
     #{echo_cmd %[sudo -u postgres psql -c "$SQL"]}
     echo "-----> Done"
   }
-end
 
-task :setup => :environment do
-  queue! %[mkdir -p "#{deploy_to}/shared/log"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
-
-  queue! %[mkdir -p "#{deploy_to}/shared/config"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
-
-  invoke :'setup:db:database_yml'
-  invoke :'setup:application_yml'
-  invoke :'create:db'
+  puts "-----> You're now ready to deploy with `mina deploy`"
 end
 
 desc "test before deploying"
@@ -119,12 +128,7 @@ task :deploy => :environment do
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
-
-    # to :launch do
-    #   queue "touch #{deploy_to}/tmp/restart.txt"
-    # end
   end
-  system "mina start:all"
 end
 
 
